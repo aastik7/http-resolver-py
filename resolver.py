@@ -18,7 +18,7 @@ def resolve_http(url):
     # server_ip = "127.0.0.1" 
     # port = 8000
 
-    client_socket.bind((host,80))
+    client_socket.connect((host,80))
 
     #Send an HTTP GET Request
     # Send an HTTP GET request
@@ -33,7 +33,14 @@ def resolve_http(url):
             break
         response += data # Combining chunks to reconstruct full response after the initial 2096 bytes request
     
-    print(response.decode("utf-8"))
+    print(response.decode("utf-8")) #Converting the recieved bytes to utf-8 string
+
+    client_socket.close()
+
+resolve_http("http://www.google.com")
+
+
+
 
 
 
