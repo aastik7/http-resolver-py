@@ -2,11 +2,28 @@ import socket #Provides access to BSD socket interface
 
 def resolve_http(url):
     
-    parts = url.split('/')#Remove '/' from the url
-    
-    host = parts[2] #Finding host in the parts list
-    
-    path = "/" + "/".join(parts[3:]) #Added the rest of the path
+    # Parse the URL to get the host and path
 
+    parts = url.split('/')  #Remove '/' from the url
     
+    host = parts[2]   #Finding host in the parts list
+    
+    path = "/" + "/".join(parts[3:])  #Added the rest of the path
+
+    # Create a socket
+
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM ) #Arg AF_INET = IPv4 and socket.SOCK_STREAM = TCP
+                                                                       #Arg AF_INET6 = IPv6 and socket.SOCK_DGRAM = UDP                                                                               
+    # IP's and Port can be defined as such
+    # server_ip = "127.0.0.1" 
+    # port = 8000
+
+    client_socket.bind((host,80))
+
+    #Send an HTTP GET Request
+    # Send an HTTP GET request
+    request = f"GET {path} HTTP/1.1\r\nHost: {host}\r\n\r\n"
+    client_socket.sendall(request.encode())
+
+
 
