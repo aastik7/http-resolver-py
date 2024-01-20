@@ -21,7 +21,11 @@ def resolve_http(url, output_file="outputfile.txt"):
 
     client_socket.connect((host,443)) # Port 443 for HTTPS
 
-    client_socket = ssl.wrap_socket(client_socket, ssl_version=ssl.PROTOCOL_TLS)
+    #Create an SSL context
+
+    context = ssl.create_default_context
+
+    client_socket = context.wrap_socket(client_socket, server_hostname=host)
 
     #Send an HTTP GET Request
     # Send an HTTP GET request
