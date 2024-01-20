@@ -1,4 +1,5 @@
 import socket #Provides access to BSD socket interface
+import ssl
 
 def resolve_http(url, output_file="outputfile.txt"):
     
@@ -19,6 +20,8 @@ def resolve_http(url, output_file="outputfile.txt"):
     # port = 8000
 
     client_socket.connect((host,443)) # Port 443 for HTTPS
+
+    client_socket = ssl.wrap_socket(client_socket, ssl_version=ssl.PROTOCOL_TLS)
 
     #Send an HTTP GET Request
     # Send an HTTP GET request
