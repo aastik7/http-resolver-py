@@ -25,5 +25,16 @@ def resolve_http(url):
     request = f"GET {path} HTTP/1.1\r\nHost: {host}\r\n\r\n"
     client_socket.sendall(request.encode())
 
+    # Recieve and print server response
+    response = b""   # Initializing the empty byte string to store recieved data 
+    while True:
+        data = client_socket.recv(4096)
+        if not data:
+            break
+        response += data # Combining chunks to reconstruct full response after the initial 2096 bytes request
+    
+    print(response.decode("utf-8"))
+
+
 
 
