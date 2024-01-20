@@ -1,6 +1,6 @@
 import socket #Provides access to BSD socket interface
 
-def resolve_http(url):
+def resolve_http(url, output_file="outputfile.txt"):
     
     # Parse the URL to get the host and path
 
@@ -42,10 +42,10 @@ def resolve_http(url):
     client_socket.close()
 
 # Specify the output file name (change as needed)
-output_file_name = "output.txt"
+
     
 
-resolve_http("https://www.google.com", output_file=output_file_name)
+resolve_http("https://www.google.com", output_file="outputfile.txt")
 
 
 
