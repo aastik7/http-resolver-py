@@ -18,7 +18,7 @@ def resolve_http(url):
     # server_ip = "127.0.0.1" 
     # port = 8000
 
-    client_socket.connect((host,80))
+    client_socket.connect((host,443)) # Port 443 for HTTPS
 
     #Send an HTTP GET Request
     # Send an HTTP GET request
@@ -35,9 +35,17 @@ def resolve_http(url):
     
     print(response.decode("utf-8")) #Converting the recieved bytes to utf-8 string
 
+    # Write response to a text file
+    with open(output_file, "w", encoding="utf-8") as file:
+        file.write(response.decode("utf-8"))
+
     client_socket.close()
 
-resolve_http("http://www.google.com")
+# Specify the output file name (change as needed)
+output_file_name = "output.txt"
+    
+
+resolve_http("https://www.google.com", output_file=output_file_name)
 
 
 
