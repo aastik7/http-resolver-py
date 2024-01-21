@@ -9,7 +9,7 @@ This Python script provides a basic implementation of an HTTP resolver using raw
 1. **Clone the Repository:**
    - Clone this repository to your local machine using the following command:
      ```
-     git clone [https://github.com/aastik7/http-resolver.git](https://github.com/aastik7/http-resolver-py)
+     git clone https://github.com/aastik7/http-resolver.git
      ```
 
 2. **Run the Script:**
