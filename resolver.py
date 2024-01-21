@@ -35,7 +35,7 @@ def resolve_http(url, output_file="outputfile.txt"):
     # Recieve and print server response
     response = b""   # Initializing the empty byte string to store recieved data 
     while True:
-        data = client_socket.recv(4096)
+        data = client_socket.recv(8192)
         if not data:
             break
         response += data # Combining chunks to reconstruct full response after the initial 2096 bytes request
